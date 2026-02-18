@@ -7,4 +7,6 @@ public class IdeaHelper
     
     public Guid UserId { get; set; }
     public User User { get; set; }
+    
+    public HelpType HelpType { get; set; }
 }

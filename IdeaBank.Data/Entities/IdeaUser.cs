@@ -7,4 +7,6 @@ public class IdeaUser
     
     public Guid UserId { get; set; }
     public User User { get; set; }
+    
+    public UserRole UserRole { get; set; }
 }
