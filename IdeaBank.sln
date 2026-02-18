@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeaBank.Web", "IdeaBank.Web\IdeaBank.Web.csproj", "{55B2B0B6-3BC5-4F18-8632-624B45662EDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeaBank.Data", "IdeaBank.Data\IdeaBank.Data.csproj", "{89CE8CD7-EB4A-4CC0-8B6E-96F131F97666}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeaBank.Models", "IdeaBank.Models\IdeaBank.Models.csproj", "{B6BDBDC1-3438-4183-907D-25B20EDF080D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{55B2B0B6-3BC5-4F18-8632-624B45662EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55B2B0B6-3BC5-4F18-8632-624B45662EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55B2B0B6-3BC5-4F18-8632-624B45662EDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89CE8CD7-EB4A-4CC0-8B6E-96F131F97666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89CE8CD7-EB4A-4CC0-8B6E-96F131F97666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89CE8CD7-EB4A-4CC0-8B6E-96F131F97666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89CE8CD7-EB4A-4CC0-8B6E-96F131F97666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6BDBDC1-3438-4183-907D-25B20EDF080D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6BDBDC1-3438-4183-907D-25B20EDF080D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6BDBDC1-3438-4183-907D-25B20EDF080D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6BDBDC1-3438-4183-907D-25B20EDF080D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
