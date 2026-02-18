@@ -16,6 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\IdeaBank.Data\IdeaBank.Data.csproj" />
+      <ProjectReference Include="..\IdeaBank.Models\IdeaBank.Models.csproj" />
     </ItemGroup>
 
 </Project>
