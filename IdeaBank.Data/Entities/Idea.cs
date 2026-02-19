@@ -1,4 +1,8 @@
-﻿namespace IdeaBank.Data.Entities;
+﻿using IdeaBank.Data;
+using IdeaBank.Data.Entities;
+using IdeaBank.Shared;
+
+namespace IdeaBank.Data.Entities;
 
 public class Idea
 {

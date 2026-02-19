@@ -1,4 +1,4 @@
-﻿using IdeaBank.Data;
+﻿using IdeaBank.Shared;
 
 namespace IdeaBank.Models.DTOs.UserRoleDtos;
 

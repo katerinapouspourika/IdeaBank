@@ -1,4 +1,4 @@
-﻿namespace IdeaBank.Data;
+﻿namespace IdeaBank.Shared;
 
 public enum UserRole
 {

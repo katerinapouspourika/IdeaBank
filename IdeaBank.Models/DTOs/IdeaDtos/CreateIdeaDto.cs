@@ -1,5 +1,4 @@
-﻿using IdeaBank.Data;
-
+﻿
 namespace IdeaBank.Models.DTOs.Idea;
 
 public class CreateIdeaDto

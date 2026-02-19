@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeaBank.Data", "IdeaBank.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeaBank.Models", "IdeaBank.Models\IdeaBank.Models.csproj", "{B6BDBDC1-3438-4183-907D-25B20EDF080D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeaBank.Shared", "IdeaBank.Shared\IdeaBank.Shared.csproj", "{49DC938B-7987-4333-BCAB-F1FBC57FBFFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{B6BDBDC1-3438-4183-907D-25B20EDF080D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6BDBDC1-3438-4183-907D-25B20EDF080D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6BDBDC1-3438-4183-907D-25B20EDF080D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49DC938B-7987-4333-BCAB-F1FBC57FBFFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49DC938B-7987-4333-BCAB-F1FBC57FBFFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49DC938B-7987-4333-BCAB-F1FBC57FBFFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49DC938B-7987-4333-BCAB-F1FBC57FBFFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
