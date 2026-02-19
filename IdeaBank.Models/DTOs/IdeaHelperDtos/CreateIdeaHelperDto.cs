@@ -1,6 +1,6 @@
-﻿using IdeaBank.Data;
-
+﻿using IdeaBank.Shared;
 namespace IdeaBank.Models.DTOs.IdeaHelperDtos;
+
 
 public class CreateIdeaHelperDto
 {

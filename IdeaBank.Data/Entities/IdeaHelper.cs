@@ -1,4 +1,6 @@
-﻿namespace IdeaBank.Data.Entities;
+﻿using IdeaBank.Shared;
+
+namespace IdeaBank.Data.Entities;
 
 public class IdeaHelper
 {

@@ -1,8 +1,8 @@
-﻿using IdeaBank.Data;
-using IdeaBank.Models.DTOs.ComponentDtos;
+﻿using IdeaBank.Models.DTOs.ComponentDtos;
 using IdeaBank.Models.DTOs.Place;
 using IdeaBank.Models.DTOs.SectorDtos;
 using IdeaBank.Models.DTOs.UserDtos;
+using IdeaBank.Shared;
 
 namespace IdeaBank.Models.DTOs.Idea;
 
