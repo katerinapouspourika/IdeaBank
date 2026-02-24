@@ -1,6 +1,5 @@
 ﻿using IdeaBank.Data.Entities;
 using IdeaBank.Models.DTOs.Idea;
-using IdeaBank.Models.DTOs.UserDtos;
 
 namespace IdeaBank.Web.Extensions.Mappings;
 
@@ -29,7 +28,7 @@ public static class MappingIdeas
         {
             IdeaId = idea.IdeaId,
             Title = idea.Title,
-            Description = idea.Description,
+            Description = idea.Description
         };
     }
 
