@@ -21,6 +21,7 @@ public class IdeaEndpoints
         group.MapGet("{id:guid}", GetIdeaById)
             .WithName(nameof(GetIdeaById));
         group.MapPut("{id:guid}", UpdateIdea);
+        group.MapDelete("{id:guid}", DeleteIdea);
 
         return endpoint;
     }
@@ -97,6 +98,31 @@ public class IdeaEndpoints
         await db.SaveChangesAsync(cancellationToken);
 
         return TypedResults.Ok(idea.ToReturnIdeaDto());
+    }
+
+    public static async Task<Results<NoContent, BadRequest>> DeleteIdea(
+        Guid id,
+        IdeaBankDbContext db,
+        ILogger<IdeaEndpoints> logger,
+        CancellationToken cancellationToken = default)
+    {
+        logger.LogInformation(nameof(Idea));
+
+        var ideaToDelete = await db.Ideas
+            .FirstOrDefaultAsync(i => i.IdeaId == id, cancellationToken);
+
+        if (ideaToDelete == null)
+        {
+            logger.LogError(nameof(Idea));
+            return TypedResults.NoContent();
+        }
+
+        db.Ideas.Remove(ideaToDelete);
+        
+        await db.SaveChangesAsync(cancellationToken);
+        
+        logger.LogInformation(nameof(ideaToDelete));
+        return TypedResults.NoContent();
     }
 
 
