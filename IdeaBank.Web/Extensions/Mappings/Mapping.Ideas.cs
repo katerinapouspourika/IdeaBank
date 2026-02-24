@@ -39,9 +39,7 @@ public static class MappingIdeas
         {
             IdeaId = idea.IdeaId,
             Title = idea.Title,
-            Description = idea.Description,
-            Date = idea.Date,
-            Status = idea.Status,
+            Description = idea.Description
             
         };
     }

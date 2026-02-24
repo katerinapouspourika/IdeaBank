@@ -43,10 +43,6 @@ public class IdeaBankDbContext(DbContextOptions<IdeaBankDbContext> options) : Db
             {
                 x.IdeaId, x.ComponentId
             });
-        modelBuilder.Entity<Idea>()
-            .HasOne(i => i.Creator)
-            .WithMany(i => i.CreatedIdeas)
-            .HasForeignKey(i => i.UserId)
-            .OnDelete(DeleteBehavior.Restrict);
+            
     }
 }
