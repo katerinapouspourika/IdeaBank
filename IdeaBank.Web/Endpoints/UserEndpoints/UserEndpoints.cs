@@ -16,8 +16,10 @@ public class UserEndpoints
 
         group.MapPost(string.Empty, CreateUser);
         group.MapGet("{id:guid}", GetUserById).WithName(nameof(GetUserById));
+        group.MapGet(string.Empty, GetAllUsers);
         group.MapPut("{id:guid}", UpdateUser);
         group.MapDelete("{id:guid}", DeleteUser);
+        
         
         return endpoint;
     }
@@ -47,6 +49,28 @@ public class UserEndpoints
 
         var returnUserDto = user.ToReturnUser();
         return TypedResults.CreatedAtRoute(returnUserDto, nameof(GetUserById), new{id=returnUserDto.UserId});
+    }
+
+    public static async Task<Results<Ok<List<ReturnUserDto>>, NotFound<ErrorMessage>>> GetAllUsers(
+        IdeaBankDbContext db,
+        ILogger<IdeaBankDbContext> logger,
+        CancellationToken cancellationToken = default)
+    {
+        logger.LogInformation(nameof(User));
+        
+        var allUsers = await db.Users
+            .AsNoTracking()
+            .Select(u => u.ToReturnUser())
+            .ToListAsync(cancellationToken);
+
+        if (allUsers.Count == 0)
+        {
+            return TypedResults.NotFound(new ErrorMessage("No users found"));
+        }
+
+        return TypedResults.Ok(allUsers);
+
+
     }
 
     public static async Task<Results<Ok<ReturnUserDto>, NotFound<ErrorMessage>>> GetUserById(
