@@ -16,7 +16,7 @@ public static class MappingIdeas
         };
     }
 
-    public static void UpdateIdea(this UpdateIdeaDto dto, Idea idea)
+    public static void UpdateIdea(this Idea idea, UpdateIdeaDto dto)
     {
         idea.Title = dto.Title;
         idea.Description = dto.Description;

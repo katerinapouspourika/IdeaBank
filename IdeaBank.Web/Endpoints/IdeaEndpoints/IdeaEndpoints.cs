@@ -20,6 +20,8 @@ public class IdeaEndpoints
         group.MapPost(string.Empty, CreateIdea);
         group.MapGet("{id:guid}", GetIdeaById)
             .WithName(nameof(GetIdeaById));
+        group.MapPut("{id:guid}", UpdateIdea);
+        group.MapDelete("{id:guid}", DeleteIdea);
 
         return endpoint;
     }
@@ -71,6 +73,56 @@ public class IdeaEndpoints
         }
         
         return TypedResults.Ok(idea);
+    }
+
+    public static async Task<Results<Ok<ReturnIdeaDto>, NotFound<ErrorMessage>>> UpdateIdea(
+        Guid id,
+        UpdateIdeaDto updateIdeasDto,
+        IdeaBankDbContext db,
+        ILogger<IdeaEndpoints> logger,
+        CancellationToken cancellationToken = default)
+    {
+        logger.LogInformation(nameof(Idea));
+
+        var idea = await db.Ideas
+            .FirstOrDefaultAsync(idea => idea.IdeaId == id, cancellationToken);
+
+        if (idea == null)
+        {
+            logger.LogError(nameof(Idea));
+            return TypedResults.NotFound(new ErrorMessage("The idea you are looking for was not found."));
+        }
+        
+        MappingIdeas.UpdateIdea(idea, updateIdeasDto);
+
+        await db.SaveChangesAsync(cancellationToken);
+
+        return TypedResults.Ok(idea.ToReturnIdeaDto());
+    }
+
+    public static async Task<Results<NoContent, BadRequest>> DeleteIdea(
+        Guid id,
+        IdeaBankDbContext db,
+        ILogger<IdeaEndpoints> logger,
+        CancellationToken cancellationToken = default)
+    {
+        logger.LogInformation(nameof(Idea));
+
+        var ideaToDelete = await db.Ideas
+            .FirstOrDefaultAsync(i => i.IdeaId == id, cancellationToken);
+
+        if (ideaToDelete == null)
+        {
+            logger.LogError(nameof(Idea));
+            return TypedResults.NoContent();
+        }
+
+        db.Ideas.Remove(ideaToDelete);
+        
+        await db.SaveChangesAsync(cancellationToken);
+        
+        logger.LogInformation(nameof(ideaToDelete));
+        return TypedResults.NoContent();
     }
 
 
