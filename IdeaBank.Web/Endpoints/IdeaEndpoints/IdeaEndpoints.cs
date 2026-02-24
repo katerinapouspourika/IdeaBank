@@ -20,6 +20,7 @@ public class IdeaEndpoints
         group.MapPost(string.Empty, CreateIdea);
         group.MapGet("{id:guid}", GetIdeaById)
             .WithName(nameof(GetIdeaById));
+        group.MapGet(string.Empty, GetAllIdeas);
         group.MapPut("{id:guid}", UpdateIdea);
         group.MapDelete("{id:guid}", DeleteIdea);
 
@@ -52,6 +53,26 @@ public class IdeaEndpoints
         var returnIdeadto = idea.ToReturnIdeaDto();
         
         return TypedResults.CreatedAtRoute(returnIdeadto, nameof(GetIdeaById), new {id=returnIdeadto.IdeaId});
+    }
+
+    public static async Task<Results<Ok<List<ReturnIdeaDto>>, NotFound<ErrorMessage>>> GetAllIdeas(
+        IdeaBankDbContext db,
+        ILogger<IdeaEndpoints> logger,
+        CancellationToken cancellationToken = default)
+    {
+        logger.LogInformation(nameof(Idea));
+
+        var allIdeas = await db.Ideas
+            .AsNoTracking()
+            .Select(i => i.ToReturnIdeaDto())
+            .ToListAsync(cancellationToken);
+
+        if (allIdeas.Count == 0)
+        {
+            return TypedResults.NotFound(new ErrorMessage("No idea was found."));
+        }
+        
+        return TypedResults.Ok(allIdeas);
     }
 
     public static async Task<Results<Ok<ReturnIdeaDto>, NotFound<ErrorMessage>>> GetIdeaById(
