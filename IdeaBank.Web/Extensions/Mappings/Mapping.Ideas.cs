@@ -5,7 +5,7 @@ namespace IdeaBank.Web.Extensions.Mappings;
 
 public static class MappingIdeas
 {
-    public static Idea ToIdea(this Idea dto)
+    public static Idea ToIdea(this CreateIdeaDto dto)
     {
         return new Idea
         {
