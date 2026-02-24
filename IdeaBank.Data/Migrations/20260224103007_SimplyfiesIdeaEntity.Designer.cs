@@ -3,6 +3,7 @@ using System;
 using IdeaBank.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace IdeaBank.Data.Migrations
 {
     [DbContext(typeof(IdeaBankDbContext))]
-    partial class IdeaBankDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260224103007_SimplyfiesIdeaEntity")]
+    partial class SimplyfiesIdeaEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
