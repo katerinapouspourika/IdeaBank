@@ -5,11 +5,11 @@ namespace IdeaBank.Web.Extensions.Mappings;
 
 public static class MappingUser
 {
-   public static User ToUser(this User dto)
+   public static User ToUser(this CreateUserDto dto)
    {
       return new User
       {
-         UserId = dto.UserId,
+         UserId = Guid.NewGuid(),
          Name = dto.Name,
          Surname = dto.Surname,
       };
