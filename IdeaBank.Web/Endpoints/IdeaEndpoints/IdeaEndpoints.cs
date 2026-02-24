@@ -114,7 +114,7 @@ public class IdeaEndpoints
         if (ideaToDelete == null)
         {
             logger.LogError(nameof(Idea));
-            return TypedResults.NoContent();
+            return TypedResults.BadRequest();
         }
 
         db.Ideas.Remove(ideaToDelete);
