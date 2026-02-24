@@ -15,7 +15,7 @@ public static class MappingUser
       };
    }
 
-   public static void UdpateUser(this User dto, User user)
+   public static void UpdateUser(this User user, UpdateUserDto dto)
    {
       user.Name = dto.Name;
       user.Surname = dto.Surname;

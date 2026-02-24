@@ -16,6 +16,8 @@ public class UserEndpoints
 
         group.MapPost(string.Empty, CreateUser);
         group.MapGet("{id:guid}", GetUserById).WithName(nameof(GetUserById));
+        group.MapPut("{id:guid}", UpdateUser);
+        group.MapDelete("{id:guid}", DeleteUser);
         
         return endpoint;
     }
@@ -66,5 +68,54 @@ public class UserEndpoints
         }
         
         return TypedResults.Ok(user);
+    }
+
+    public static async Task<Results<Ok<ReturnUserDto>, NotFound<ErrorMessage>>> UpdateUser(
+        Guid id,
+        UpdateUserDto updateUserDto,
+        IdeaBankDbContext db,
+        ILogger<IdeaBankDbContext> logger,
+        CancellationToken cancellationToken = default)
+    {
+        logger.LogInformation(nameof(User));
+
+        var user = await db.Users
+            .FirstOrDefaultAsync(user => user.UserId == id, cancellationToken);
+
+        if (user == null)
+        {
+            logger.LogError(nameof(User));
+            return TypedResults.NotFound(new ErrorMessage("The user you are looking for was not found"));
+        }
+
+        MappingUser.UpdateUser(user, updateUserDto);
+
+        await db.SaveChangesAsync(cancellationToken);
+        return TypedResults.Ok(user.ToReturnUser());
+    }
+
+    public static async Task<Results<NoContent, BadRequest>> DeleteUser(
+        Guid id,
+        IdeaBankDbContext db,
+        ILogger<IdeaBankDbContext> logger,
+        CancellationToken cancellationToken = default)
+    {
+        logger.LogInformation(nameof(User));
+
+        var userToDelete = await db.Users
+            .FirstOrDefaultAsync(user => user.UserId == id, cancellationToken);
+
+        if (userToDelete == null)
+        {
+            logger.LogError(nameof(User));
+            return TypedResults.BadRequest();
+        }
+
+        db.Users.Remove(userToDelete);
+
+        await db.SaveChangesAsync(cancellationToken);
+        
+        logger.LogInformation(nameof(userToDelete));
+        return TypedResults.NoContent();
     }
 }
