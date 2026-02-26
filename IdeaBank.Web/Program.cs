@@ -1,4 +1,7 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using IdeaBank.Data;
+using IdeaBank.Validation.IdeaDtosValidation;
 using IdeaBank.Web.Endpoints.IdeaEndpoints;
 using IdeaBank.Web.Endpoints.UserEndpoints;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +16,7 @@ builder.Services.AddDbContext<IdeaBankDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("IdeaBankConnection")));
 
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateIdeaDtoValidator>();
 
 
 var app = builder.Build();

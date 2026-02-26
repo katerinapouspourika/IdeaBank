@@ -3,6 +3,7 @@ using IdeaBank.Data.Entities;
 using IdeaBank.Models.DTOs.ErrorMessageDto;
 using IdeaBank.Models.DTOs.Idea;
 using IdeaBank.Web.Extensions.Mappings;
+using IdeaBank.Web.Filters;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,11 +18,11 @@ public class IdeaEndpoints
     {
         var group = endpoint.MapGroup("idea").WithTags("Idea");
 
-        group.MapPost(string.Empty, CreateIdea);
+        group.MapPost(string.Empty, CreateIdea).AddEndpointFilter(new ValidationFilter<CreateIdeaDto>());
         group.MapGet("{id:guid}", GetIdeaById)
             .WithName(nameof(GetIdeaById));
         group.MapGet(string.Empty, GetAllIdeas);
-        group.MapPut("{id:guid}", UpdateIdea);
+        group.MapPut("{id:guid}", UpdateIdea).AddEndpointFilter(new ValidationFilter<UpdateIdeaDto>());
         group.MapDelete("{id:guid}", DeleteIdea);
 
         return endpoint;
