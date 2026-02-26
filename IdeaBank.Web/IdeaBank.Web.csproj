@@ -7,6 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="FluentValidation" Version="12.1.1" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
         <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.3">
@@ -18,6 +20,7 @@
     <ItemGroup>
       <ProjectReference Include="..\IdeaBank.Data\IdeaBank.Data.csproj" />
       <ProjectReference Include="..\IdeaBank.Models\IdeaBank.Models.csproj" />
+      <ProjectReference Include="..\IdeaBank.Validation\IdeaBank.Validation.csproj" />
     </ItemGroup>
 
 </Project>
