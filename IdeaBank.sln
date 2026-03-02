@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeaBank.Shared", "IdeaBank
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeaBank.Validation", "IdeaBank.Validation\IdeaBank.Validation.csproj", "{8AAAC1A0-66A6-418B-BFC8-563D526113B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeaBank.Infra", "IdeaBank.Infra\IdeaBank.Infra.csproj", "{B71A869C-0465-4DD4-93D5-486B506078B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{8AAAC1A0-66A6-418B-BFC8-563D526113B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AAAC1A0-66A6-418B-BFC8-563D526113B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AAAC1A0-66A6-418B-BFC8-563D526113B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B71A869C-0465-4DD4-93D5-486B506078B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B71A869C-0465-4DD4-93D5-486B506078B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B71A869C-0465-4DD4-93D5-486B506078B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B71A869C-0465-4DD4-93D5-486B506078B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

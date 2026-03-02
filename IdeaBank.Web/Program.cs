@@ -1,6 +1,7 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using IdeaBank.Data;
+using IdeaBank.Infra;
 using IdeaBank.Validation.IdeaDtosValidation;
 using IdeaBank.Web.Endpoints.IdeaEndpoints;
 using IdeaBank.Web.Endpoints.UserEndpoints;
@@ -17,9 +18,12 @@ builder.Services.AddDbContext<IdeaBankDbContext>(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateIdeaDtoValidator>();
+builder.Services.AddAuthenticationServices(builder.Configuration);
 
 
 var app = builder.Build();
+
+app.UseAuthentication();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
