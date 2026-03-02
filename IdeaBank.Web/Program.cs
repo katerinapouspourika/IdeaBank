@@ -19,11 +19,13 @@ builder.Services.AddDbContext<IdeaBankDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateIdeaDtoValidator>();
 builder.Services.AddAuthenticationServices(builder.Configuration);
+builder.Services.AddAuthorization();
 
 
 var app = builder.Build();
 
 app.UseAuthentication();
+app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
